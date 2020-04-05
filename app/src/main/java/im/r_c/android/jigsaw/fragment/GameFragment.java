@@ -28,10 +28,10 @@ import me.drakeet.mailotto.Mailbox;
  * Created by richard on 16/5/15.
  */
 public class GameFragment extends Fragment implements View.OnTouchListener {
-    public static final int DIRECTION_DOWN = 100;
-    public static final int DIRECTION_UP = -100;
-    public static final int DIRECTION_RIGHT = 101;
-    public static final int DIRECTION_LEFT = -101;
+    private static final int DIRECTION_DOWN = 100;
+    private static final int DIRECTION_UP = -100;
+    private static final int DIRECTION_RIGHT = 101;
+    private static final int DIRECTION_LEFT = -101;
     private static final String TAG = "GameFragment";
     private int mSpanCount;
     private Bitmap[] mBitmapBricks;

@@ -50,12 +50,7 @@ public class ChooseActivity extends AppCompatActivity {
                 holder.setViewImageResource(R.id.iv_image, mResIds[position]);
             }
         };
-        adapter.setOnItemClickListener(new CommonRecyclerViewAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(View view, int position) {
-                returnUri(mUris[position]);
-            }
-        });
+        adapter.setOnItemClickListener((view, position) -> returnUri(mUris[position]));
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new GridLayoutManager(this, CHOOSER_SPAN_COUNT));
         recyclerView.addItemDecoration(new SquareGridSpacingItemDecoration(this, R.dimen.brick_divider_width, CHOOSER_SPAN_COUNT));

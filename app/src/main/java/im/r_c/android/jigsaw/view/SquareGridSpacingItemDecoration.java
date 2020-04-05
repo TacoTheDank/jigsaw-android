@@ -16,7 +16,7 @@ public class SquareGridSpacingItemDecoration extends RecyclerView.ItemDecoration
     private int mSpacing;
     private int mSpanCount;
 
-    public SquareGridSpacingItemDecoration(int spacing, int spanCount) {
+    private SquareGridSpacingItemDecoration(int spacing, int spanCount) {
         mSpacing = spacing;
         mSpanCount = spanCount;
     }

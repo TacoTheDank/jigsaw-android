@@ -1,7 +1,6 @@
 package im.r_c.android.jigsaw.activity;
 
 import android.annotation.SuppressLint;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -9,7 +8,6 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.transition.Explode;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
@@ -102,12 +100,10 @@ public class GameActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        switch (requestCode) {
-            case REQUEST_CODE_CHOOSE_PICTURE:
-                if (resultCode == RESULT_OK) {
-                    handleChooseResult(data.getData());
-                }
-                break;
+        if (requestCode == REQUEST_CODE_CHOOSE_PICTURE) {
+            if (resultCode == RESULT_OK) {
+                handleChooseResult(data.getData());
+            }
         }
     }
 
@@ -181,7 +177,6 @@ public class GameActivity extends AppCompatActivity {
         }
     }
 
-    @SuppressLint("SetTextI18n")
     private void onGameStarted() {
         mStepCount = 0;
         mTvStep.setText(String.valueOf(mStepCount));
@@ -193,14 +188,11 @@ public class GameActivity extends AppCompatActivity {
             @SuppressLint("SimpleDateFormat")
             @Override
             public void run() {
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        long nowTime = System.currentTimeMillis();
-                        Date span = new Date(nowTime - mStartTime);
-                        SimpleDateFormat format = new SimpleDateFormat("mm:ss");
-                        mTvTime.setText(format.format(span));
-                    }
+                runOnUiThread(() -> {
+                    long nowTime = System.currentTimeMillis();
+                    Date span = new Date(nowTime - mStartTime);
+                    SimpleDateFormat format = new SimpleDateFormat("mm:ss");
+                    mTvTime.setText(format.format(span));
                 });
             }
         }, 0, 1000);
@@ -214,18 +206,15 @@ public class GameActivity extends AppCompatActivity {
     private void onGameWon() {
         mTimer.cancel();
         mTimer.purge();
-        App.getMainHandler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                getSupportFragmentManager()
-                        .beginTransaction()
-                        .replace(R.id.fl_board_container, WinFragment.newInstance(mFullBitmap))
-                        .commit();
-                UIUtils.toast(
-                        GameActivity.this,
-                        String.format(getString(R.string.win_prompt_format), mTvTime.getText().toString(), mTvStep.getText().toString()),
-                        true);
-            }
+        App.getMainHandler().postDelayed(() -> {
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.fl_board_container, WinFragment.newInstance(mFullBitmap))
+                    .commit();
+            UIUtils.toast(
+                    GameActivity.this,
+                    String.format(getString(R.string.win_prompt_format), mTvTime.getText().toString(), mTvStep.getText().toString()),
+                    true);
         }, 500);
     }
 
@@ -243,18 +232,8 @@ public class GameActivity extends AppCompatActivity {
         new AlertDialog.Builder(this)
                 .setTitle(getString(R.string.restart))
                 .setMessage(getString(R.string.confirm_restart_msg))
-                .setPositiveButton(getString(R.string.confirm), new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        startNewGame();
-                    }
-                })
-                .setNegativeButton(getString(R.string.cancel), new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                    }
-                })
+                .setPositiveButton(getString(R.string.confirm), (dialog, which) -> startNewGame())
+                .setNegativeButton(getString(R.string.cancel), (dialog, which) -> dialog.dismiss())
                 .show();
     }
 
@@ -271,12 +250,9 @@ public class GameActivity extends AppCompatActivity {
         final AlertDialog dialog = new AlertDialog.Builder(this)
                 .setView(alertView)
                 .create();
-        alertView.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                dialog.dismiss();
-                return true;
-            }
+        alertView.setOnTouchListener((v, event) -> {
+            dialog.dismiss();
+            return true;
         });
         dialog.show();
     }

@@ -18,7 +18,7 @@ public abstract class CommonRecyclerViewAdapter<T> extends RecyclerView.Adapter<
     private OnItemClickListener mOnItemClickListener;
     private OnItemLongClickListener mOnItemLongClickListener;
 
-    public CommonRecyclerViewAdapter(Context context, T[] dataArray, int layoutId) {
+    protected CommonRecyclerViewAdapter(Context context, T[] dataArray, int layoutId) {
         mContext = context;
         mDataArray = dataArray;
         mLayoutId = layoutId;
@@ -41,20 +41,10 @@ public abstract class CommonRecyclerViewAdapter<T> extends RecyclerView.Adapter<
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
         if (mOnItemClickListener != null) {
-            holder.itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    mOnItemClickListener.onItemClick(v, holder.getLayoutPosition());
-                }
-            });
+            holder.itemView.setOnClickListener(v -> mOnItemClickListener.onItemClick(v, holder.getLayoutPosition()));
         }
         if (mOnItemLongClickListener != null) {
-            holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
-                @Override
-                public boolean onLongClick(View v) {
-                    return mOnItemLongClickListener.onItemLongClick(v, holder.getLayoutPosition());
-                }
-            });
+            holder.itemView.setOnLongClickListener(v -> mOnItemLongClickListener.onItemLongClick(v, holder.getLayoutPosition()));
         }
         onItemViewAppear(holder, mDataArray[position], position);
     }

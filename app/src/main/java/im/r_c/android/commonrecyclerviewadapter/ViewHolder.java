@@ -13,13 +13,13 @@ import androidx.recyclerview.widget.RecyclerView;
 public class ViewHolder extends RecyclerView.ViewHolder {
     private SparseArray<View> mViews;
 
-    public ViewHolder(View itemView) {
+    ViewHolder(View itemView) {
         super(itemView);
         mViews = new SparseArray<>();
     }
 
     @SuppressWarnings("unchecked")
-    public <T extends View> T getView(int viewId) {
+    private <T extends View> T getView(int viewId) {
         View view = mViews.get(viewId);
 
         if (view == null) {
@@ -35,14 +35,12 @@ public class ViewHolder extends RecyclerView.ViewHolder {
         return this;
     }
 
-    public ViewHolder setViewImageResource(int viewId, int resId) {
+    public void setViewImageResource(int viewId, int resId) {
         ReflectHelper.invokeMethodIfExists("setImageResource", getView(viewId), new Class[]{int.class}, new Object[]{resId});
-        return this;
     }
 
-    public ViewHolder setViewImageBitmap(int viewId, Bitmap bitmap) {
+    public void setViewImageBitmap(int viewId, Bitmap bitmap) {
         ReflectHelper.invokeMethodIfExists("setImageBitmap", getView(viewId), new Class[]{Bitmap.class}, new Object[]{bitmap});
-        return this;
     }
 
     public ViewHolder setViewChecked(int viewId, boolean checked) {

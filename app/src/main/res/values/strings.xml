@@ -1,12 +1,12 @@
 <resources>
-    <string name="app_name">J Puzzle</string>
+    <string name="app_name">Jigsaw Puzzle</string>
     <string name="time_count">Time</string>
     <string name="step_count">Steps</string>
     <string name="change_picture">Change Picture</string>
     <string name="restart">Restart</string>
     <string name="look_up_original_picture">Original Picture</string>
     <string name="win_prompt_format">You won! Spent %1$s, moved %2$s steps.</string>
-    <string name="confirm_restart_msg">Are you sure to restart? All game status will be lost.</string>
+    <string name="confirm_restart_msg">Are you sure about restarting? All game status will be lost.</string>
     <string name="confirm">Confirm</string>
     <string name="cancel">Cancel</string>
     <string name="choose_picture_to_start">Click here to start a game</string>
