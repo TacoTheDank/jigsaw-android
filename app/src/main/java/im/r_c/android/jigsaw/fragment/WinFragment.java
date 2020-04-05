@@ -2,11 +2,12 @@ package im.r_c.android.jigsaw.fragment;
 
 import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+
+import androidx.fragment.app.Fragment;
 
 import im.r_c.android.jigsaw.R;
 

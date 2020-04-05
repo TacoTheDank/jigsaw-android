@@ -3,10 +3,11 @@ package im.r_c.android.jigsaw.activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.theartofdev.edmodo.cropper.CropImage;
 
@@ -41,7 +42,7 @@ public class ChooseActivity extends AppCompatActivity {
     }
 
     private void initView() {
-        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.rv_pics);
+        RecyclerView recyclerView = findViewById(R.id.rv_pics);
         assert recyclerView != null;
         CommonRecyclerViewAdapter<Uri> adapter = new CommonRecyclerViewAdapter<Uri>(this, mUris, R.layout.choose_pic_item) {
             @Override

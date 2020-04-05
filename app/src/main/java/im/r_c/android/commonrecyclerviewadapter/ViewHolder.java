@@ -1,9 +1,10 @@
 package im.r_c.android.commonrecyclerviewadapter;
 
 import android.graphics.Bitmap;
-import android.support.v7.widget.RecyclerView;
 import android.util.SparseArray;
 import android.view.View;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 /**
  * CommonRecyclerViewAdapter

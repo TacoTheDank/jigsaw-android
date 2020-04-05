@@ -3,8 +3,9 @@ package im.r_c.android.jigsaw.util;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.net.Uri;
-import android.support.annotation.AnyRes;
-import android.support.annotation.NonNull;
+
+import androidx.annotation.AnyRes;
+import androidx.annotation.NonNull;
 
 /**
  * Jigsaw

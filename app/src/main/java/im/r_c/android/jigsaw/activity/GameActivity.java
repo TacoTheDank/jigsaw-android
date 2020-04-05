@@ -8,9 +8,6 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.v4.app.ActivityOptionsCompat;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.transition.Explode;
 import android.view.MotionEvent;
 import android.view.View;
@@ -18,6 +15,10 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityOptionsCompat;
 
 import java.io.FileNotFoundException;
 import java.text.SimpleDateFormat;
@@ -73,9 +74,9 @@ public class GameActivity extends AppCompatActivity {
 
         Mailbox.getInstance().atHome(this);
 
-        mTvTime = (TextView) findViewById(R.id.tv_time);
-        mTvStep = (TextView) findViewById(R.id.tv_step);
-        mBtnChooseAndStart = (Button) findViewById(R.id.btn_choose_and_start);
+        mTvTime = findViewById(R.id.tv_time);
+        mTvStep = findViewById(R.id.tv_step);
+        mBtnChooseAndStart = findViewById(R.id.btn_choose_and_start);
     }
 
     @Override
