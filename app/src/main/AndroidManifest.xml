@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          xmlns:tools="http://schemas.android.com/tools"
-          package="im.r_c.android.jigsaw">
+    xmlns:tools="http://schemas.android.com/tools"
+    package="im.r_c.android.jigsaw">
 
     <application
         android:name=".App"
@@ -16,18 +16,17 @@
             android:name=".activity.GameActivity"
             android:screenOrientation="portrait">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
+                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
             android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
-            android:theme="@style/CropImageActivityTheme"/>
+            android:theme="@style/CropImageActivityTheme" />
         <activity
             android:name=".activity.ChooseActivity"
-            android:screenOrientation="portrait">
-        </activity>
+            android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>

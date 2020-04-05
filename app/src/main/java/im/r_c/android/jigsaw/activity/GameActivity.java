@@ -26,8 +26,8 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import im.r_c.android.jigsaw.App;
-import im.r_c.android.jigsaw.fragment.GameFragment;
 import im.r_c.android.jigsaw.R;
+import im.r_c.android.jigsaw.fragment.GameFragment;
 import im.r_c.android.jigsaw.fragment.WinFragment;
 import im.r_c.android.jigsaw.util.IOUtils;
 import im.r_c.android.jigsaw.util.L;
@@ -41,7 +41,6 @@ import me.drakeet.mailotto.OnMailReceived;
  * Created by richard on 16/5/15.
  */
 public class GameActivity extends AppCompatActivity {
-    private static final String TAG = "GameActivity";
     public static final int SPAN_COUNT = 3;
     public static final int BLANK_BRICK = 8;
     public static final int[][] GOAL_STATUS = {{0, 1, 2}, {3, 4, 5}, {6, 7, BLANK_BRICK}};
@@ -49,7 +48,7 @@ public class GameActivity extends AppCompatActivity {
     public static final int MAIL_STEP_MOVED = 101;
     public static final int MAIL_GAME_WON = 102;
     public static final int REQUEST_CODE_CHOOSE_PICTURE = 200;
-
+    private static final String TAG = "GameActivity";
     private Bitmap mFullBitmap;
     private Bitmap[] mBitmapBricks = new Bitmap[SPAN_COUNT * SPAN_COUNT];
     private Timer mTimer;

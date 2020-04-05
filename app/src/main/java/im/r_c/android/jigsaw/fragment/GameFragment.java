@@ -27,11 +27,24 @@ import me.drakeet.mailotto.Mailbox;
  * Created by richard on 16/5/15.
  */
 public class GameFragment extends Fragment implements View.OnTouchListener {
-    private static final String TAG = "GameFragment";
     public static final int DIRECTION_DOWN = 100;
     public static final int DIRECTION_UP = -100;
     public static final int DIRECTION_RIGHT = 101;
     public static final int DIRECTION_LEFT = -101;
+    private static final String TAG = "GameFragment";
+    private int mSpanCount;
+    private Bitmap[] mBitmapBricks;
+    private int[][] mGoalStatus;
+    private int[][] mCurrStatus;
+    private Point mCurrBlankPos;
+    private RecyclerView mRecyclerView;
+    private float mLastX = 0;
+    private float mLastY = 0;
+    private int mLastDirection = 0;
+    private boolean mMovedOnTouch = false;
+
+    public GameFragment() {
+    }
 
     public static GameFragment newInstance(Bitmap[] bitmapBricks, int[][] goalStatus) {
         Bundle args = new Bundle();
@@ -41,16 +54,6 @@ public class GameFragment extends Fragment implements View.OnTouchListener {
         fragment.setArguments(args);
         return fragment;
     }
-
-    public GameFragment() {
-    }
-
-    private int mSpanCount;
-    private Bitmap[] mBitmapBricks;
-    private int[][] mGoalStatus;
-    private int[][] mCurrStatus;
-    private Point mCurrBlankPos;
-    private RecyclerView mRecyclerView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -90,11 +93,6 @@ public class GameFragment extends Fragment implements View.OnTouchListener {
         mRecyclerView.addItemDecoration(new SquareGridSpacingItemDecoration(getContext(), R.dimen.brick_divider_width, mGoalStatus.length));
         mRecyclerView.setOnTouchListener(this);
     }
-
-    private float mLastX = 0;
-    private float mLastY = 0;
-    private int mLastDirection = 0;
-    private boolean mMovedOnTouch = false;
 
     @Override
     public boolean onTouch(View v, MotionEvent event) {

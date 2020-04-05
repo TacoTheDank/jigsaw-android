@@ -15,15 +15,15 @@ import im.r_c.android.jigsaw.R;
  * Created by richard on 16/5/15.
  */
 public class WinFragment extends Fragment {
+    public WinFragment() {
+    }
+
     public static WinFragment newInstance(Bitmap bitmap) {
         Bundle args = new Bundle();
         args.putParcelable("image", bitmap);
         WinFragment fragment = new WinFragment();
         fragment.setArguments(args);
         return fragment;
-    }
-
-    public WinFragment() {
     }
 
     @Override
