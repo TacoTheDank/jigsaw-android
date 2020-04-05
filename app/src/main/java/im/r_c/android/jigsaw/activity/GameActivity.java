@@ -265,7 +265,7 @@ public class GameActivity extends AppCompatActivity {
         }
 
         View alertView = View.inflate(this, R.layout.dialog_loop_up, null);
-        ImageView imageView = (ImageView) alertView.findViewById(R.id.iv_image);
+        ImageView imageView = alertView.findViewById(R.id.iv_image);
         imageView.setImageBitmap(mFullBitmap);
         final AlertDialog dialog = new AlertDialog.Builder(this)
                 .setView(alertView)

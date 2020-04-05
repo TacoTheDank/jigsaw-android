@@ -30,8 +30,8 @@ public class WinFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_win, container, false);
-        ImageView iv = (ImageView) view.findViewById(R.id.iv_image);
-        iv.setImageBitmap((Bitmap) getArguments().getParcelable("image"));
+        ImageView iv = view.findViewById(R.id.iv_image);
+        iv.setImageBitmap(getArguments().getParcelable("image"));
         return view;
     }
 }
